@@ -221,3 +221,4 @@ Upgrade the 2D Matplotlib animation engine to a hardware-accelerated 3D WebGL ex
 ---
 
 *This document serves as the architectural reference for upcoming development sprints.*
+
