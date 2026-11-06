@@ -106,7 +106,10 @@ with col_anim:
     st.subheader("Simulation Animation")
     full_gif_path = PROJECT_ROOT / gif_path
     if full_gif_path.exists():
-        st.image(str(full_gif_path), caption=f"{title} (Animated Demo)", use_container_width=True)
+        try:
+            st.image(str(full_gif_path), caption=f"{title} (Animated Demo)", width="stretch")
+        except TypeError:
+            st.image(str(full_gif_path), caption=f"{title} (Animated Demo)", use_container_width=True)
     else:
         st.warning(f"Demo animation not found at: {gif_path}")
 
@@ -129,5 +132,8 @@ overview_data = []
 for cat, items in CATEGORIES.items():
     for name, path, _, desc in items:
         overview_data.append({"Category": cat, "Algorithm": name, "Script": Path(path).name, "Summary": desc})
-st.dataframe(overview_data, use_container_width=True)
+try:
+    st.dataframe(overview_data, width="stretch")
+except TypeError:
+    st.dataframe(overview_data, use_container_width=True)
 
